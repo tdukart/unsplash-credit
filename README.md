@@ -17,6 +17,37 @@ import UnsplashCredit from 'unsplash-credit';
 </div>
 ```
 
-That results in:
+That results in (this is a screenshot, so you won't see the interaction):
 
-!(example.png)[example.png]
+![dog photo](/example.png)
+
+When the user hovers over the credit, the full credit will appear.
+
+## Options
+
+### `userName`
+String, required.
+
+The photographer's username (found by the '@' symbol on the photo information page)
+
+
+### `name`
+String, required
+
+The photographer's real name
+
+### `display`
+String, optional
+
+One of `inline` (default), `top-left`, `bottom-left`, `top-right`, `bottom-right`.
+
+How to display the credit. The options other than <code>inline</code> require that the credit and the photo be in a relatively-position element, as in the example above.
+
+### `active`
+Boolean, optional
+
+If true, forces the credit in the "hover" mode to show the photo credit. Probably desired if you're using `display="inline"`.
+
+# Notes
+
+This project is not affiliated with or endorsed by Unsplash. Dog photo used in the example is by Berkay Gumustekin on Unplash.
