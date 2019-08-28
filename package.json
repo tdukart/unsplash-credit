@@ -1,6 +1,6 @@
 {
   "name": "unsplash-credit",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React component for Unsplash credit",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
