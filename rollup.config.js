@@ -9,7 +9,7 @@ import svgr from '@svgr/rollup';
 import pkg from './package.json';
 
 export default {
-  input: 'src/UnsplashCredit.tsx',
+  input: 'src/index.tsx',
   output: [
     {
       file: pkg.main,
