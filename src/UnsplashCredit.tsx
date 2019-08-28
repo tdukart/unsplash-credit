@@ -7,7 +7,7 @@ interface UnsplashCreditProps {
   userName: string;
   name: string;
   display?: 'inline' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-  referralName?: string;
+  appName?: string;
 }
 
 const CreditLink = styled.a`
@@ -114,14 +114,14 @@ const UnsplashCredit: React.FC<UnsplashCreditProps> = ({
   userName,
   name,
   display,
-  referralName,
+  appName,
 }: UnsplashCreditProps) => {
   const creditQueryParams = [
     'utm_medium=referral',
     'utm_campaign=photographer-credit',
     'utm_content=creditBadge',
-    ...(referralName ? [`utm_source=${referralName}`] : []),
-  ].join('&amp;');
+    ...(appName ? [`utm_source=${appName}`] : []),
+  ].join('&');
 
   return (
     <Wrapper
