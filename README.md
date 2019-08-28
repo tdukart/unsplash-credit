@@ -30,7 +30,6 @@ String, required.
 
 The photographer's username (found by the '@' symbol on the photo information page)
 
-
 ### `name`
 String, required
 
@@ -47,6 +46,11 @@ How to display the credit. The options other than <code>inline</code> require th
 Boolean, optional
 
 If true, forces the credit in the "hover" mode to show the photo credit. Probably desired if you're using `display="inline"`.
+
+### `appName`
+String, optional
+
+[Unsplash's API guidelines](https://help.unsplash.com/en/articles/2511315-guideline-attribution) require you to provide a `utm_source` parameter on the credit with your app name. Provide it here to add the parameter.
 
 # Notes
 

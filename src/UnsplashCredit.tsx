@@ -7,6 +7,7 @@ interface UnsplashCreditProps {
   userName: string;
   name: string;
   display?: 'inline' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  appName?: string;
 }
 
 const CreditLink = styled.a`
@@ -113,31 +114,41 @@ const UnsplashCredit: React.FC<UnsplashCreditProps> = ({
   userName,
   name,
   display,
-}: UnsplashCreditProps) => (
-  <Wrapper
-    className={active ? 'unsplash-credit-active' : ''}
-    inline={(display === 'inline') || !display}
-    vAlign={getVerticalAlignment(display)}
-    hAlign={getHorizontalAlignment(display)}
-  >
-    <CreditLink
-      href={`https://unsplash.com/@${userName}?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge`}
-      target="_blank"
-      rel="noopener noreferrer"
-      title={`Download free do whatever you want high-resolution photos from ${name}`}
+  appName,
+}: UnsplashCreditProps) => {
+  const creditQueryParams = [
+    'utm_medium=referral',
+    'utm_campaign=photographer-credit',
+    'utm_content=creditBadge',
+    ...(appName ? [`utm_source=${appName}`] : []),
+  ].join('&');
+
+  return (
+    <Wrapper
+      className={active ? 'unsplash-credit-active' : ''}
+      inline={(display === 'inline') || !display}
+      vAlign={getVerticalAlignment(display)}
+      hAlign={getHorizontalAlignment(display)}
     >
-      <UnsplashLogoWrapper>
-        <UnsplashLogo
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 32 32"
-        >
-          <title>Unsplash Logo</title>
-          <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z" />
-        </UnsplashLogo>
-      </UnsplashLogoWrapper>
-      <span className="unsplash-credit-photog">{name}</span>
-    </CreditLink>
-  </Wrapper>
-);
+      <CreditLink
+        href={`https://unsplash.com/@${userName}?${creditQueryParams}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Download free do whatever you want high-resolution photos from ${name}`}
+      >
+        <UnsplashLogoWrapper>
+          <UnsplashLogo
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+          >
+            <title>Unsplash Logo</title>
+            <path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z" />
+          </UnsplashLogo>
+        </UnsplashLogoWrapper>
+        <span className="unsplash-credit-photog">{name}</span>
+      </CreditLink>
+    </Wrapper>
+  );
+};
 
 export default UnsplashCredit;
